@@ -16,10 +16,13 @@ if lang == 'ru':
     for line in sys.stdin:
         toks = [t['text'] for t in mystem.analyze(line.strip())]
         print(' '.join(' '.join(toks).split()))
-        
 else:
     import spacy
-    nlp = spacy.load(lang, parser=False, entity=False)
+    if lang == 'pl':
+        from spacy.lang.pl import Polish
+        nlp = Polish()
+    else:
+        nlp = spacy.load(lang, parser=False, entity=False)
     for line in sys.stdin:
         toks = nlp.tokenizer(line.strip())
         print(' '.join(t.text for t in toks))

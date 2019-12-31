@@ -5,7 +5,6 @@ from __future__ import print_function, unicode_literals, division
 
 import sys
 import argparse
-import numpy as np
 import enchant
 
 SPM_SEPARATOR = "▁"
