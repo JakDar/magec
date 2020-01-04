@@ -31,6 +31,9 @@ from __future__ import print_function, unicode_literals, division
 # Junczys-Dowmunt et al. (2018b), we pretrain the
 # full encoder-decoder models instead, as proposed
 # by Grundkiewicz et al. (2019).
+
+
+# FIXME - remove - there were those scripts
 import sentencepiece
 from functional import seq
 import random
@@ -40,7 +43,7 @@ SPM_MODEL = "/home/owner/blob/data/nlp/wikipl/plwiki/spm/ala.makota.model"
 SPM_VOCAB = "/home/owner/blob/data/nlp/wikipl/plwiki/spm/ala.makota.vocab"
 SOURCE_FILE = "~/blob/data/nlp/wikipl/plwiki/derv/sentences_20_sortuniq.txt"
 TOKENIZED_FILE = "/home/owner/blob/data/nlp/wikipl/plwiki/derv/sentences_20_sortuniq_spm.txt"
-DST_FILE = "./errors.txt"
+DST_FILE = "/home/owner/blob/data/nlp/wikipl/plwiki/derv/sentences_20_sortuniq_err.txt"
 
 CONFUSION_SET_FILE = "./confustion.tsv"
 
@@ -112,14 +115,14 @@ def modify_letter(tokenized: List[str], i: str, vocab: List[str]):
 
 
 def sub_token(tokenized: List[str], i: str, cs: Dict[str, List[str]]):
-    idx = max(len(tokenized) - 1, i)
+    idx = min(len(tokenized) - 1, i)
     key = tokenized[idx]
     if key in cs.keys():
         tokenized[idx] = random.choice(cs[key])
 
 
 def sub_letter(tokenized: List[str], i: str, vocab: List[str]):
-    idx = max(len(tokenized) - 1, i)
+    idx = min(len(tokenized) - 1, i)
     tokenized[idx] = random.choice(vocab)
 
 
@@ -163,17 +166,13 @@ if __name__ == '__main__':
     cs = load_confusion_set()
     vocab = load_spm_vocab()
 
-    def orig_and_changed(tok: List[str]):
-        print("==================")
-        print(decode(spm, tok))
+    def altered(tok: List[str]):
         alter_spm(tok, cs, vocab)
-
         spm_altered = decode(spm, tok)
-        typo_altered = alter_letter(spm_altered, alphabet)
-        print(typo_altered)
+        return alter_letter(spm_altered, alphabet)
 
-    with open(TOKENIZED_FILE) as orig_file:
+    import tqdm
+    with open(TOKENIZED_FILE) as src_file, open(DST_FILE, mode='w+') as dst_file:
 
-        ala = orig_file.readlines()
-        for line in random.sample(ala, 30):
-            orig_and_changed(line.split(" "))
+        for line in tqdm.tqdm(src_file.readlines()):
+            dst_file.write(altered(line.split(" ")) + "\n")

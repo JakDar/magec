@@ -62,6 +62,7 @@ def main():
         if not args.quiet and n % 100000 == 0:
             sys.stderr.write('[{}]\n'.format(n))
 
+
 def subrep(cands, conf):
     cont = True
     reps = 0
@@ -74,10 +75,12 @@ def subrep(cands, conf):
         if reps > 5:
             cont = False
 
+
 def sub(cands, conf):
     i = random.randrange(len(cands))
     if cands[i] in conf:
         cands[i] = random.choice(conf[cands[i]])
+
 
 def swap(cands, conf):
     if len(cands) < 2:
@@ -85,9 +88,11 @@ def swap(cands, conf):
     i = random.randrange(len(cands) - 1)
     cands[i], cands[i + 1] = cands[i + 1], cands[i]
 
+
 def delete(cands, conf):
     i = random.randrange(len(cands))
     cands.pop(i)
+
 
 def insert(cands, conf):
     i = random.randrange(len(cands))

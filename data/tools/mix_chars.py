@@ -34,7 +34,6 @@ def main():
     for i in range(int(probIns * total)):
         actions.append(insert)
 
-
     for i, line in enumerate(sys.stdin):
         sentence = list(line.rstrip())
 

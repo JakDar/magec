@@ -6,3 +6,6 @@
 *.npz
 *.spm
 *.tgz
+*.tsv
+*.txt
+marian-dev/
