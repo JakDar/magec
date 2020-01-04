@@ -17,7 +17,7 @@ def parse_user_args():
 
 
 if __name__ == '__main__':
-    args = parse_user_args
+    args = parse_user_args()
 
     CORR_FILE = expanduser(args.corr_file)
     ERR_FILE = expanduser(args.err_file)

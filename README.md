@@ -1,5 +1,5 @@
 # Minimally-Augmented Grammatical Error Correction
-
+Fork of https://github.com/grammatical/magec-wnut2019
 This repository contains models and training scripts for our MAGEC systems for
 English, German and Russian described in R. Grundkiewicz, M. Junczys-Dowmunt,
 _Minimally-Augmented Grammatical Error Correction_, W-NUT 2019.

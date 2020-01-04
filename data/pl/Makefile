@@ -10,4 +10,4 @@ err:
 
 split:
 	mkdir split
-	$(tools_dir)/split.py --output-dir ./split --corr-file ./corr.txt --err-file ./err.txt -r 0.2
+	python $(tools_dir)/split.py --output-dir ./split --corr-file ./corr.txt --err-file ./err.txt -r 0.2
