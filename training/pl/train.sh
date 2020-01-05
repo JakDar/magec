@@ -5,7 +5,7 @@ MARIAN=../../models/tools/marian-dev/build
 DATA=../../data/pl/split
 SPM_DATA=../../data/pl/spm
 MODELDIR='.'
-OUT="/content/drive/My\\ Drive/nlp/out"
+OUT="/content/drive/My\ Drive/nlp/out"
 
 # Before vocab
 # --data-weighting "$DATA"/mono.enchant.spell.tok.w2.gz --data-weighting-type word \
