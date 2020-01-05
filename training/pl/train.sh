@@ -14,6 +14,7 @@ OUT=/out
 # --vocabs "$DATA"/vocab.{spm,spm} --tied-embeddings-all \
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
+	-w 7000 \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
