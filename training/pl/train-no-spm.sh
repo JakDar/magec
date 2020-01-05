@@ -8,8 +8,6 @@ MODELDIR='.'
 
 # Before vocab
 # --data-weighting "$DATA"/mono.enchant.spell.tok.w2.gz --data-weighting-type word \
-#after macx length
-# --vocabs "$DATA"/vocab.{spm,spm} --tied-embeddings-all \
 "$MARIAN"/marian --type transformer \
 	--model "$MODELDIR"/model.npz \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
