@@ -1,7 +1,7 @@
 #!/bin/bash -v
 
 set -e
-MARIAN=../../models/tools/marian-dev
+MARIAN=../../models/tools/marian-dev/build
 DATA=../../data/pl/split
 SPM_DATA=../../data/pl/spm
 MODELDIR='.'
