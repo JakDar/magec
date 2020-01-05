@@ -14,8 +14,7 @@ MODELDIR='.'
 	--model "$MODELDIR"/model.npz \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
-  --vocabs "$DATA"/vocab.{spm,spm} --tied-embeddings-all \
-	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
+  --enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
 	--exponential-smoothing --label-smoothing 0.1 \
 	--mini-batch-fit -w 9500 --mini-batch 1000 --maxi-batch 1000 --sync-sgd --optimizer-delay 4 \

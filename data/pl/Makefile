@@ -11,3 +11,10 @@ err:
 split:
 	mkdir split
 	python $(tools_dir)/split.py --output-dir ./split --corr-file ./corr.txt --err-file ./err.txt -r 0.2
+
+compress:
+	gzip split/*
+
+#download:
+	 # wget https://drive.google.com/uc?export=download&confirm=szJo&id=1TMir_LJcX7teFKcUDrT0q3aLr3r4oAqX
+   # unzip data.zip
