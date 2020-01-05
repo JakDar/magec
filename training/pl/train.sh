@@ -5,17 +5,18 @@ MARIAN=../../models/tools/marian-dev/build
 DATA=../../data/pl/split
 SPM_DATA=../../data/pl/spm
 MODELDIR='.'
-OUT='/content/drive/My\ Drive/nlp/out'
+OUT="/content/drive/My\\ Drive/nlp/out"
 
 # Before vocab
 # --data-weighting "$DATA"/mono.enchant.spell.tok.w2.gz --data-weighting-type word \
 #after macx length
+
 # --vocabs "$DATA"/vocab.{spm,spm} --tied-embeddings-all \
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
-  --vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
+	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
 	--exponential-smoothing --label-smoothing 0.1 \
