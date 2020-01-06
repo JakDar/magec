@@ -31,6 +31,6 @@ OUT=/out
 	--valid-script-path "$MODELDIR"/validate.sh \
 	--valid-mini-batch 16 --beam-size 12 --normalize 1.0 \
 	--early-stopping 5 --after-epochs 5 \
-	--valid-freq 50000 --save-freq 1000 --disp-freq 500 --disp-first 5 \
+	--valid-freq 50000 --save-freq 2000 --disp-freq 500 --disp-first 5 \
 	--overwrite --keep-best \
 	--log "$OUT"/train.log --valid-log "$OUT"/valid.log
