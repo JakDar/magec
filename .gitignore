@@ -10,3 +10,4 @@
 *.txt
 marian-dev/
 *.gz
+.metals/

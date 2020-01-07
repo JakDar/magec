@@ -10,7 +10,7 @@ err:
 
 split:
 	mkdir split
-	python $(tools_dir)/split.py --output-dir ./split --corr-file ./corr.txt --err-file ./err.txt -r 0.2
+	python $(tools_dir)/split.py --output-dir ./split --corr-file ./corr.txt --err-file ./err.txt -r 0.05
 
 compress:
 	gzip split/*
