@@ -11,3 +11,5 @@
 marian-dev/
 *.gz
 .metals/
+*.zip
+spm/

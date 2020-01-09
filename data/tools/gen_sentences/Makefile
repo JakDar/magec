@@ -28,7 +28,22 @@ trim-by-length-inv:
 remove-rubbish:
 	awk -f ./take_most_alpha.awk < "$(DST_DIR)/notag_moses_sent_word_len.txt" > "$(DST_DIR)/notag_moses_sent_word_len_rub.txt"
 
-trim:
-	ls $(DST_DIR)/* | xargs -I {} bash -c  "[ ! -s {} ] &&  rm {}" || echo -n ""
 
-all: notag moses-normalize	sent-tokenize	word-tokenize
+corr_dicted:
+	python ./enchant_filter.py < "$(DST_DIR)/notag_moses_sent_word_len_rub.txt" --errorfile ./corr_dict_invalid.txt > "$(DST_DIR)/notag_moses_sent_word_len_rub_dict.txt"
+
+
+char_removed:
+	sd '[^a-zA-Z0-9 \.,\?!żółćśźąęń\n]' '' <  "$(DST_DIR)/notag_moses_sent_word_len_rub_dict.txt" | rg -v '^\s*$$' > "$(DST_DIR)/notag_moses_sent_word_len_rub_dict_chr.txt"
+
+num_to_one:
+	sd '[0-9]' '1' <  "$(DST_DIR)/notag_moses_sent_word_len_rub_dict_chr.txt" | sd '[ ]+' ' ' | sed 's/^ //' > "$(DST_DIR)/notag_moses_sent_word_len_rub_dict_chr_num.txt"
+
+#TODO - reorganise
+trim-by-len-again:
+	awk '{if (length >= 3000 || length <= 40 ) {print}}' < "$(DST_DIR)/notag_moses_sent_word.txt" > "$(DST_DIR)/notag_moses_sent_word_len_inv.txt"
+
+# trim:
+# 	ls $(DST_DIR)/* | xargs -I {} bash -c  "[ ! -s {} ] &&  rm {}" || echo -n ""
+
+# all: notag moses-normalize	sent-tokenize	word-tokenize
