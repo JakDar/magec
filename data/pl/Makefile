@@ -1,7 +1,7 @@
 spm_dir=../../models/tools/marian-dev/src/3rd_party/sentencepiece/build/src
 tools_dir=../tools
 https://drive.google.com/file/d/1NaIs7WkB6jCqKhky6F5jXb1sfhRCuPRs/view?usp=sharing
-orig_cor=../tools/gen_sentences/files/notag_moses_sent_word_len_rub_dict_chr_num.txt
+orig_cor=../tools/gen_sentences/files/notag_moses_sent_word_len_rub_dict_chr_len.txt
 corr_file=./corr.txt
 corr_spm_file=./corr.spm.txt
 err_file=./err.txt
@@ -26,10 +26,16 @@ err:
 
 split:
 	mkdir split
-	python $(tools_dir)/split.py --output-dir ./split --corr-file ./corr.txt --err-file ./err.txt -r 0.05
+	python $(tools_dir)/split.py --output-dir ./split/ --corr-file ./corr.txt --err-file ./err.txt -r 0.05
 
 compress:
 	gzip split/*
+
+weights:
+	paste split/train.err.txt split/train.cor.txt | \
+	parallel --no-notice --pipe -k -j 6 --block 25M \
+	python $(tools_dir)/edit_weights.py -w 2 > weights.txt
+
 
 all: corr spm encode confusion err split
 
