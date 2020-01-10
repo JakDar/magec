@@ -8,7 +8,6 @@ MODELDIR='.'
 OUT=/out
 
 # Before vocab
-# --data-weighting "$DATA"/mono.enchant.spell.tok.w2.gz --data-weighting-type word \
 #after macx length
 
 # --vocabs "$DATA"/vocab.{spm,spm} --tied-embeddings-all \
@@ -17,6 +16,7 @@ OUT=/out
 	-w 6000 \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
+	--data-weighting "$DATA"/weights.txt.gz --data-weighting-type word \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
