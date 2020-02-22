@@ -17,7 +17,7 @@ OUT=/out
 	--train-sets "$DATA"/train.err.tok.txt "$DATA"/train.cor.tok.txt --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
 	--data-weighting "$DATA"/weights.txt --data-weighting-type word \
-	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
+	--vocabs "$OUT"/vocab.vocab "$OUT"/vocab.vocab --tied-embeddings-all \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
 	--exponential-smoothing --label-smoothing 0.1 \
