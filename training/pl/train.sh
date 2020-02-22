@@ -3,7 +3,7 @@
 set -e
 MARIAN=../../models/tools/marian-dev/build
 # DATA=/out/spm/
-DATA=/content/marian/data/pl/split #//spm/
+DATA=/content/magec/data/pl/split #//spm/
 SPM_DATA=../../data/pl/spm
 MODELDIR='.'
 OUT=/out
