@@ -13,3 +13,4 @@ marian-dev/
 .metals/
 *.zip
 spm/
+*.len

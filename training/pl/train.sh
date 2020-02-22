@@ -2,7 +2,7 @@
 
 set -e
 MARIAN=../../models/tools/marian-dev/build
-DATA=../../data/pl/split
+DATA=/out/spm/
 SPM_DATA=../../data/pl/spm
 MODELDIR='.'
 OUT=/out
@@ -14,9 +14,9 @@ OUT=/out
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
 	-w 6000 \
-	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
+	--train-sets "$DATA"/train.err.tok.txt "$DATA"/train.cor.tok.txt --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
-	--data-weighting "$DATA"/weights.txt.gz --data-weighting-type word \
+	--data-weighting "$DATA"/weights.txt --data-weighting-type word \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
@@ -26,7 +26,7 @@ OUT=/out
 	--optimizer-params 0.9 0.98 1e-09 --clip-norm 0 \
 	--cost-type cross-entropy \
 	--valid-metrics cross-entropy translation perplexity \
-	--valid-sets "$DATA"/dev.err.txt.gz "$DATA"/dev.cor.txt.gz \
+	--valid-sets "$DATA"/dev.err.tok.txt "$DATA"/dev.cor.tok.txt \
 	--valid-translation-output "$OUT"/devset.out --quiet-translation \
 	--valid-script-path "$MODELDIR"/validate.sh \
 	--valid-mini-batch 16 --beam-size 12 --normalize 1.0 \
