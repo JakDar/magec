@@ -1,4 +1,3 @@
-from typing import List
 from fire import Fire
 from functional import seq
 
