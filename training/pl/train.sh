@@ -16,10 +16,11 @@ OUT=/out
 	# no idea how to use it--data-weighting "$DATA"/weights.txt --data-weighting-type word \
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
+	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	-w 6000 \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
-	--vocabs "$OUT"/vocab.spm "$OUT"/vocab.spm --tied-embeddings-all \
+	--data-weighting "$DATA"/weights.txt --data-weighting-type word \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
 	--exponential-smoothing --label-smoothing 0.1 \
