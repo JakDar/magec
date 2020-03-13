@@ -18,7 +18,7 @@ OUT=/out
 	--model "$OUT"/model.npz \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	-w 6000 \
-	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.cor.txt.gz --shuffle-in-ram --tempdir tmp \
+	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --shuffle-in-ram --tempdir tmp \
 	--max-length 150 \
 	--data-weighting "$DATA"/weights.txt --data-weighting-type word \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
@@ -29,7 +29,7 @@ OUT=/out
 	--optimizer-params 0.9 0.98 1e-09 --clip-norm 0 \
 	--cost-type cross-entropy \
 	--valid-metrics cross-entropy translation perplexity \
-	--valid-sets "$DATA"/dev.err.txt.gz "$DATA"/dev.cor.txt.gz \
+	--valid-sets "$DATA"/dev.err.txt.gz "$DATA"/dev.corr.txt.gz \
 	--valid-translation-output "$OUT"/devset.out --quiet-translation \
 	--valid-script-path "$MODELDIR"/validate.sh \
 	--valid-mini-batch 16 --beam-size 12 --normalize 1.0 \
