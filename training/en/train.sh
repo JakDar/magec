@@ -29,4 +29,5 @@ $MARIAN/marian --type transformer \
     --early-stopping 5 --after-epochs 5 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 --disp-first 5 \
     --overwrite --keep-best \
-    --log $MODELDIR/train.log --valid-log $MODELDIR/valid.log
+    --log $MODELDIR/train.log --valid-log $MODELDIR/valid.log \
+    --log-level $1
