@@ -20,7 +20,7 @@ OUT=/out
 	--model "$OUT"/model.npz \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	-w 6000 \
-	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --shuffle-in-ram --tempdir tmp \
+	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --no-shuffle --tempdir tmp \
 	--max-length 150 \
 	--data-weighting "$DATA"/weights.txt --data-weighting-type word \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
