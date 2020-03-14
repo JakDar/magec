@@ -7,11 +7,11 @@ MARIAN=$ROOTDIR/marian-dev/build
 DATA=$ROOTDIR/data/en
 MODELDIR=.
 
-    # --data-weighting $DATA/mono.enchant.spell.tok.w2.gz --data-weighting-type word \
 $MARIAN/marian --type transformer \
     --model $MODELDIR/model.npz \
     -d 0 1 2 3 \
     --train-sets $DATA/mono.enchant.spell.tok.err.gz $DATA/mono.cor.gz --shuffle-in-ram --tempdir tmp \
+    --data-weighting $DATA/mono.enchant.spell.tok.w2.gz --data-weighting-type word \
     --vocabs $DATA/vocab.{spm,spm} --tied-embeddings-all \
     --max-length 150 \
     --enc-depth 6 --dec-depth 6 --transformer-heads 8 \
@@ -29,5 +29,4 @@ $MARIAN/marian --type transformer \
     --early-stopping 5 --after-epochs 5 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 --disp-first 5 \
     --overwrite --keep-best \
-    --log $MODELDIR/train.log --valid-log $MODELDIR/valid.log #\
-    # --log-level $1
+    --log $MODELDIR/train.log --valid-log $MODELDIR/valid.log
