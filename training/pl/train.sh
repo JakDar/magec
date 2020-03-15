@@ -21,7 +21,7 @@ OUT=/out
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --no-shuffle --tempdir tmp \
 	--data-weighting "$DATA"/weights.w2.gz --data-weighting-type word \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
-	--max-length 150 \
+	--max-length 200 \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
 	--dropout-src 0.2 --dropout-trg 0.1 --transformer-dropout 0.3 --transformer-dropout-ffn 0.1 --transformer-dropout-attention 0.1 \
 	--exponential-smoothing --label-smoothing 0.1 \
