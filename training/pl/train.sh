@@ -19,7 +19,7 @@ OUT=/out
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --no-shuffle --tempdir tmp \
-	--data-weighting "$DATA"/weights.txt --data-weighting-type word \
+	--data-weighting "$DATA"/weights.w2.gz --data-weighting-type word \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	--max-length 150 \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
