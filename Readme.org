@@ -1,0 +1,9 @@
+#+TITLE: Readme
+
+* Installing on GCP deep VM
+nvidia p100
+https://stackoverflow.com/questions/43151627/installing-g-7-0-1-on-debian-8-7#43151826
+1. Install gcc-7 and set as default
+2. Install g++-7 and set as default
+3. uninstall libboost
+4. Install libboost 1.67
