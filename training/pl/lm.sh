@@ -15,9 +15,9 @@ GPUS=1
 
 # mkdir -p $MODEL/eval
 # cp $0 $MODEL/script.sh
+    # -d $GPUS \
 
 $MARIAN/marian --type lm-transformer \
-    -d $GPUS \
     --model "$OUT"/lm.npz \
     --train-sets "$DATA"/train.corr.txt.gz \
     --vocabs "$OUT"/vocab.spm --tied-embeddings-all \
