@@ -14,7 +14,6 @@ else
 	RAM=8000
 fi
 echo $RAM
-exit 1
 GPUS=1
 
 # mkdir -p $MODEL/eval
