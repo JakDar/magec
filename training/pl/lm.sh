@@ -12,7 +12,17 @@ if [ $# -eq 1 ]; then
 	RAM=$1
 else
 	RAM=8000
+	FREQ=5000
 fi
+
+if [ $# -eq 2 ]; then
+	RAM=$1
+	FREQ=$2
+else
+	RAM=8000
+	FREQ=5000
+fi
+
 echo $RAM
 GPUS=1
 
@@ -36,6 +46,6 @@ $MARIAN/marian --type lm-transformer \
 	--valid-sets "$DATA"/dev.corr.txt.gz \
 	--valid-mini-batch 16 \
 	--early-stopping 5 --after-epochs 2 \
-	--valid-freq 10000 --save-freq 10000 --disp-freq 1000 \
+	--valid-freq $FREQ --save-freq $FREQ --disp-freq 1000 \
 	--overwrite --keep-best \
 	--log "$OUT"/train.log --valid-log "$OUT"/valid.log
