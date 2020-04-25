@@ -10,12 +10,8 @@ MARIAN=../../models/tools/marian-dev/build
 
 if [ $# -eq 1 ]; then
 	RAM=$1
-else
-	RAM=8000
 	FREQ=5000
-fi
-
-if [ $# -eq 2 ]; then
+elif [ $# -eq 2 ]; then
 	RAM=$1
 	FREQ=$2
 else
@@ -23,7 +19,6 @@ else
 	FREQ=5000
 fi
 
-echo $RAM
 GPUS=1
 
 # mkdir -p $MODEL/eval
