@@ -32,7 +32,7 @@ GPUS=1
 
 $MARIAN/marian --type lm-transformer \
 	--model "$OUT"/lm.npz \
-	--train-sets "$DATA"/train.corr.txt.gz \
+	--train-sets "$DATA"/train.corr.txt.gz --no-shuffle \
 	--vocabs "$OUT"/vocab.spm --tied-embeddings-all \
 	--max-length 120 --max-length-crop \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
