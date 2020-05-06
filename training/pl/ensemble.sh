@@ -21,10 +21,6 @@ shift
 
 OPTIONS="-m $@ -v /out/vocab.spm /out/vocab.spm --mini-batch 32 --beam-size 6 --normalize 1.0 --max-length 120 --max-length-crop --quiet-translation"
 
-mkdir -p $DIR
-
-
-
 # bash ./evaluate.sh models/ensemble.lm/eval "$GPUS" models/transformer.?/model.npz.best-translation.npz models/lm.2/model.npz.best-perplexity.npz \
 #     --weights 1. 1. 1. 1. .4
 
@@ -39,4 +35,4 @@ cat $ERROR_FILE\
 
 
 echo "Models: $@"
-tail $DIR/*.eval
+# tail $DIR/*.eval
