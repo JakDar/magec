@@ -1,3 +1,6 @@
 [submodule "data/tools/gen_sentences/moses-scripts"]
 	path = data/tools/gen_sentences/moses-scripts
 	url = https://github.com/marian-nmt/moses-scripts
+[submodule "data/tools/moses-scripts"]
+	path = data/tools/moses-scripts
+	url = https://github.com/marian-nmt/moses-scripts
