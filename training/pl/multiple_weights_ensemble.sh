@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [ $# -lt 3 ]; then
+if [ $# -lt 2 ]; then
 	print "usage: $0 <dir> <gpus> <models>"
 	exit 1
 fi
