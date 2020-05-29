@@ -1,0 +1,32 @@
+#+TITLE: Open Subtitles
+
+* What to do?
+** Stage 1
+/Join files/
+[[file:./stage1.sh][stage1.sh]]
+** Stage 2 - Coarse grain
+[[file:./stage2.sh][stage2.sh]]
+1. remove lines with [ ], =, @, ' MKV ', ~\d{3,4} ?x ?{\d+3 4}~
+2. Remove lines if match ~rg '^\d+\.\d+ \)'~, ~rg '^\d+ \)'~
+3. Remove in parenthesis, in curly
+4. Fix/rm triple dots
+   - if at sentece end - replace with ...
+   - if in the middle  - remove
+5. remove Lines if: started with
+   1. korekta
+   2. tłumaczenie
+   3. przekład
+   4. napis
+   5. synchro
+6. Remove suffixes
+   #+BEGIN_SRC bash :results raw replace drawer :noeval
+    awk -v q="'" 'BEGIN{printf q  " ("} {printf $2 "|"} END{printf ")"}' < ./data/endings_most_popular
+   #+END_SRC
+
+   #+RESULTS:
+   :results:
+   ' (a|ego|s|em|owi|m|u|t|emu|ów|re|c|go|ie|ve|iem|n|ra|y|i|iego|d|owie|uid|ca|e|nie|to|ami|cie|tac|ę|am|mu|w|all|tak|la|an|na|ach|ai|ą|sa|ri|im|al|dib|or|on|in|ch|o|il|my|om|ha|bo|l|kay|dum|iemu|mon|owy|ana|auc|onn|you|ma|er|cowi|bout|ta|taca|out|ka|reem|ow|owa|ala|ora|ową|ti|czy|ciem|po|owej|sy|afo|at|chaim|down|dla|ahu|cem|owych|ski|aime|tych|cho|lub|ich|nar|nac|przez|nic|ki|ech|pea|lar|inem|so|kiem|kraps|sha|skim|ką|)
+   :end:
+
+** TODO Stage 3
+4. Join consecutive sentences?

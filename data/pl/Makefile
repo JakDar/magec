@@ -1,3 +1,4 @@
+#OLD
 spm_dir=../../models/tools/marian-dev/src/3rd_party/sentencepiece/build/src
 tools_dir=../tools
 https://drive.google.com/file/d/1NaIs7WkB6jCqKhky6F5jXb1sfhRCuPRs/view?usp=sharing

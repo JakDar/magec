@@ -1,0 +1,14 @@
+#+TITLE: Preprocessing
+* Outline
+1. Remove markup
+2. Split into small documents (if needed)
+3. Group into sizable documents
+4. [[Preprocess text]]
+  
+* Preprocess text
+1. Moses punctuation normalization
+2. Remove inside of parenthesis (ppc uses this a lot)
+3. Checkout PPC popular words
+4. Normalize fancy letters (ð and so on) and / or filter nonalphanumeric (exclamation marks)
+5. Sentence tokenize
+6. Word tokenize
