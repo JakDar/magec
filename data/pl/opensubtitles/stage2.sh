@@ -6,9 +6,11 @@ set -euo pipefail
 mkdir -p data/stage2
 # cat './data/joined/1' | head -n 100 |
 stage2() {
-	rg -v '([=\[\]@]|MKV|\d{3,4} ?x ?\d{3,4})' < $1 |
+	rg -v '([=\[\]@]|MKV|\d{3,4} ?x ?\d{3,4})' <$1 |
 		rg -v '^\d+\.\d+' | rg -v '^\d+ \)' |
-		sd '\([^\)]{1,60}\)' ' ' | sd '\{[^\}]{1,60}\}' ' ' |
+		sd '\([^\)]{1,90}\)' ' ' | sd '\{[^\}]{1,90}\}' ' ' |
+		rg -v -F '{ \' | # needs \\ in fish
+		rg -v -F '{' |
 		sed 's/\.\.\.$/./' | sd -s '...' ' ' |
 		rg -v --ignore-case '^(korekta|tłumaczenie|przekład|napis|synchro)' |
 		sd -s "Goa ' uld" 'Goauld' | # Stargate thing, common in suffixes
@@ -22,6 +24,6 @@ stage2() {
 
 export -f stage2 #probably not necessary
 
-for file in ./data/joined/*;do
-    sem -j 7 stage2 $file ${file/joined/stage2}
+for file in ./data/joined/*; do
+	sem -j 7 stage2 $file ${file/joined/stage2}
 done

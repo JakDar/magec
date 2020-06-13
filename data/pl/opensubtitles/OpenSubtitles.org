@@ -1,10 +1,10 @@
 #+TITLE: Open Subtitles
 
 * What to do?
-** Stage 1
+** DONE Stage 1
 /Join files/
 [[file:./stage1.sh][stage1.sh]]
-** Stage 2 - Coarse grain
+** DONE Stage 2 - Coarse grain
 [[file:./stage2.sh][stage2.sh]]
 1. remove lines with [ ], =, @, ' MKV ', ~\d{3,4} ?x ?{\d+3 4}~
 2. Remove lines if match ~rg '^\d+\.\d+ \)'~, ~rg '^\d+ \)'~
@@ -29,4 +29,6 @@
    :end:
 
 ** TODO Stage 3
-4. Join consecutive sentences?
+4. Join consecutive sentences? // don't do this right now
+** TODO Stage 4 Moses tokenize?
+** TODO Deduplicate lines

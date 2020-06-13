@@ -1,0 +1,14 @@
+#+TITLE: Polish Parliamentary Corpus
+
+* TODO What to do?
+** DONE Stage 1
+/Extract text/
+[[file:.//convert.sh][convert.sh]] + [[file:.//extract.sh][extract.sh]]
+** TODO Stage 2 - Coarse grain
+[[file:./stage2.sh][stage2.sh]]
+1. Remove in parenthesis
+2. Remove prefixes III. etc
+3. Fix m.in. and other
+
+**  Stage 3
+/Tokenize sentences/

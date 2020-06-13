@@ -10,5 +10,13 @@
 2. Remove inside of parenthesis (ppc uses this a lot)
 3. Checkout PPC popular words
 4. Normalize fancy letters (ð and so on) and / or filter nonalphanumeric (exclamation marks)
-5. Sentence tokenize
-6. Word tokenize
+5. Sentence tokenize (remember about hard cases!)
+6. Cleanup:
+   - Trim by lengths
+   - Take with most words in dict
+   - enchant filter
+7. Word tokenize
+* Dataset preparation
+1. Train Spm
+2. Errors, corrs
+3. Weights
