@@ -6,16 +6,18 @@
 4. [[Preprocess text]]
   
 * Preprocess text
+** Per Dataset
+1. Remove inside of parenthesis (ppc uses this a lot)
+2. Checkout PPC popular words
+3. Sentence tokenize (remember about hard cases!)
+** Common
 1. Moses punctuation normalization
-2. Remove inside of parenthesis (ppc uses this a lot)
-3. Checkout PPC popular words
-4. Normalize fancy letters (ð and so on) and / or filter nonalphanumeric (exclamation marks)
-5. Sentence tokenize (remember about hard cases!)
-6. Cleanup:
+2. Normalize fancy letters (ð and so on) and / or filter nonalphanumeric (exclamation marks)
+3. Cleanup:
    - Trim by lengths
    - Take with most words in dict
    - enchant filter
-7. Word tokenize
+4. Word tokenize
 * Dataset preparation
 1. Train Spm
 2. Errors, corrs

@@ -1,14 +1,17 @@
 #+TITLE: Polish Parliamentary Corpus
 
-* TODO What to do?
+* What to do?
 ** DONE Stage 1
 /Extract text/
 [[file:.//convert.sh][convert.sh]] + [[file:.//extract.sh][extract.sh]]
-** TODO Stage 2 - Coarse grain
+** DONE Stage 2 - Join
 [[file:./stage2.sh][stage2.sh]]
+** DONE Stage 3 - Coarse grain
+[[file:./stage3.sh][stage3.sh]]
 1. Remove in parenthesis
 2. Remove prefixes III. etc
 3. Fix m.in. and other
-
-**  Stage 3
+** DONE Stage 4
 /Tokenize sentences/
+[[file:./stage4.sh][stage4.sh]]
+[[file:sent_tokenize.py][sent_tokenize.py]]
