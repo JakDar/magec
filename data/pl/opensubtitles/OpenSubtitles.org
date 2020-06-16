@@ -28,7 +28,3 @@
    ' (a|ego|s|em|owi|m|u|t|emu|ów|re|c|go|ie|ve|iem|n|ra|y|i|iego|d|owie|uid|ca|e|nie|to|ami|cie|tac|ę|am|mu|w|all|tak|la|an|na|ach|ai|ą|sa|ri|im|al|dib|or|on|in|ch|o|il|my|om|ha|bo|l|kay|dum|iemu|mon|owy|ana|auc|onn|you|ma|er|cowi|bout|ta|taca|out|ka|reem|ow|owa|ala|ora|ową|ti|czy|ciem|po|owej|sy|afo|at|chaim|down|dla|ahu|cem|owych|ski|aime|tych|cho|lub|ich|nar|nac|przez|nic|ki|ech|pea|lar|inem|so|kiem|kraps|sha|skim|ką|)
    :end:
 
-** TODO Stage 3
-4. Join consecutive sentences? // don't do this right now
-** TODO Stage 4 Moses tokenize?
-** TODO Deduplicate lines
