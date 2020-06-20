@@ -25,7 +25,3 @@
 [[file:stage3.sh][stage3.sh]]
 3. Trim too short
 4. Word tokenize
-* Dataset preparation
-1. Train Spm
-2. Errors, corrs
-3. Weights

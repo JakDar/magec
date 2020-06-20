@@ -1,0 +1,19 @@
+#+TITLE: Dataset
+Here we are preparing dataset from corpus
+
+* Stage 1 - single unique file
+/Load into single file and make it unique/
+[[file:stage1.sh][stage1.sh]]
+* Stage 2
+/Create sentencepiece vocabulary, confusion set/
+~Prerequisites:~ Compile sentencepiece in [[file:../../../models/tools/marian-dev/src/3rd_party/sentencepiece][sentencepiece]]
+[[file:stage2.sh][stage2.sh]]
+* Stage3
+/Generate errors/
+[[file:stage3.sh][stage3.sh]]
+* TODO Stage 4
+/Split & compress/
+[[file:stage4.sh][stage4.sh]]
+* TODO Stage 5
+/Generate weights/
+- needs spm embedings produced by marian

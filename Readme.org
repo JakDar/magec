@@ -7,3 +7,77 @@ https://stackoverflow.com/questions/43151627/installing-g-7-0-1-on-debian-8-7#43
 2. Install g++-7 and set as default
 3. uninstall libboost
 4. Install libboost 1.67
+* Instaling on prometheus
+- agh
+  #+BEGIN_SRC bash :noeval
+#Protobuf:
+# https://github.com/protocolbuffers/protobuf/blob/master/src/README.md
+git clone https://github.com/protocolbuffers/protobuf.git
+cd protobuf
+git checkout 3.6.x
+git submodule update --init --recursive
+./autogen.sh
+./configure --prefix=/net/scratch/people/$USER/fakeuser
+make -j6
+make install
+
+
+
+
+
+#Google perf tools
+
+# Libraries have been installed in:
+#    /net/scratch/people/plgjakdar/fakeuser/lib
+
+# If you ever happen to want to link against installed libraries
+# in a given directory, LIBDIR, you must either use libtool, and
+# specify the full pathname of the library, or use the `-LLIBDIR'
+# flag during linking and do at least one of the following:
+#    - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+#      during execution
+#    - add LIBDIR to the `LD_RUN_PATH' environment variable
+#      during linking
+#    - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+#    - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+# See any operating system documentation about shared libraries for
+# more information, such as the ld(1) and ld.so(8) manual pages.
+
+
+
+
+#magec:
+# module load plgrid/tools/gcc/7.3.0
+/net/scratch/people/$USER/magec/models/tools
+git clone https://github.com/marian-nmt/marian-dev
+mkdir -p marian-dev/build
+cd marian-dev/build
+
+    # -DUSE_STATIC_LIBS=on \
+    # -DUSE_NCCL=off \
+cmake .. -DUSE_SENTENCEPIECE=on \
+    -DPROTOBUF_LIBRARY=/net/scratch/people/$USER/fakeuser/lib/libprotobuf.so \
+    -DPROTOBUF_INCLUDE_DIR=/net/scratch/people/$USER/fakeuser/include \
+    -DPROTOBUF_PROTOC_EXECUTABLE=/net/scratch/people/$USER/fakeuser/bin/protoc \
+    -DTCMALLOC_LIB=/net/scratch/people/$USER/fakeuser/lib/libtcmalloc.so # TO change maybe
+
+
+make -j8
+
+
+  #+END_SRC
+** Not working
+#+begin_quote
+[ 82%] Building CXX object src/CMakeFiles/marian.dir/layers/convolution.cpp.o
+ mnvcc error   : 'cicc' died due to signal 9 (Kill signal)
+CMake Error at marian_cuda_generated_add_all.cu.o.Release.cmake:275 (message):
+  Error generating file
+  /net/people/plgjakdar/magec/models/tools/marian-dev/build/src/CMakeFiles/marian_cuda.dir/tensors/gpu/./marian_cuda_generated_add_all.cu.o
+
+
+make[2]: *** [src/CMakeFiles/marian_cuda.dir/tensors/gpu/marian_cuda_generated_add_all.cu.o] Error 1
+make[1]: *** [src/CMakeFiles/marian_cuda.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+
+#+end_quote
