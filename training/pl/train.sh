@@ -1,23 +1,26 @@
 #!/bin/bash -v
 
 set -e
-# DATA=/out/spm/
 MARIAN=../../models/tools/marian-dev/build
-DATA=/content/magec/data/pl/split #//spm/
-SPM_DATA=../../data/pl/spm
+# DATA=/content/magec/data/pl/split # Collab
+DATA=$SCRATCH/magec/data/pl/split # Prometheus
 MODELDIR='.'
-OUT=/out
+OUT=/$SCRATCH/magecout/model1
+
+mkdir -p $OUT
 
 # Before vocab
 #after macx length
 
 # --vocabs "$DATA"/vocab.{spm,spm} --tied-embeddings-all \
-	# --train-sets "$DATA"/train.err.tok.txt "$DATA"/train.cor.tok.txt --shuffle-in-ram --tempdir tmp \
-	# no idea how to use it--data-weighting "$DATA"/weights.txt --data-weighting-type word \
+# --train-sets "$DATA"/train.err.tok.txt "$DATA"/train.cor.tok.txt --shuffle-in-ram --tempdir tmp \
+# no idea how to use it--data-weighting "$DATA"/weights.txt --data-weighting-type word \
 
-	# --train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --shuffle-in-ram --tempdir tmp \
+# --train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --shuffle-in-ram --tempdir tmp \
+
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
+	-d 0 \
 	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --no-shuffle --tempdir tmp \
 	--data-weighting "$DATA"/weights.w2.gz --data-weighting-type word \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \

@@ -3,12 +3,14 @@ set -eu
 
 mkdir -p split
 
-# Dev err
+bucket=magec-train-data
 
 for dataset in dev train; do
 	for corpus in err corr; do
+		file=${dataset}_${corpus}.gz
+
 		curl -X GET \
 			-o "split/$dataset.$corpus.txt.gz" \
-			"https://storage.googleapis.com/storage/v1/b/magec-train-data/o/${dataset}_${corpus}.gz?alt=media"
+			"https://storage.googleapis.com/storage/v1/b/$bucket/o/$file?alt=media"
 	done
 done
