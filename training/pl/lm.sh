@@ -2,10 +2,11 @@
 
 set -euo pipefail
 
-DATA=/content/magec/data/pl/split #//spm/
-SPM_DATA=../../data/pl/spm
+# DATA=/content/magec/data/pl/split #//spm/
+DATA=$SCRATCH/magec/data/pl/split # Prometheus
 MODELDIR='.'
-OUT=/out
+# OUT=/out
+OUT=/$SCRATCH/magecout/lm1
 MARIAN=../../models/tools/marian-dev/build
 
 if [ $# -eq 1 ]; then
@@ -19,15 +20,10 @@ else
 	FREQ=5000
 fi
 
-GPUS=1
-
-# mkdir -p $MODEL/eval
-# cp $0 $MODEL/script.sh
-# -d $GPUS \
-
 $MARIAN/marian --type lm-transformer \
 	--model "$OUT"/lm.npz \
-	--train-sets "$DATA"/train.corr.txt.gz --no-shuffle \
+	-d 1 2 3 4 5 6 7\
+	--train-sets "$DATA"/train.corr.txt.gz --shuffle-in-ram \
 	--vocabs "$OUT"/vocab.spm --tied-embeddings-all \
 	--max-length 120 --max-length-crop \
 	--enc-depth 6 --dec-depth 6 --transformer-heads 8 \
