@@ -22,7 +22,7 @@ fi
 
 $MARIAN/marian --type lm-transformer \
 	--model "$OUT"/lm.npz \
-	-d 1 2 3 4 5 6 7\
+	-d 0 1 2 3 4 5 6 7\
 	--train-sets "$DATA"/train.corr.txt.gz --shuffle-in-ram \
 	--vocabs "$OUT"/vocab.spm --tied-embeddings-all \
 	--max-length 120 --max-length-crop \
