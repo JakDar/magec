@@ -21,7 +21,7 @@ mkdir -p $OUT
 "$MARIAN"/marian --type transformer \
 	--model "$OUT"/model.npz \
 	-d 0 1 2 3 4 5 6 7\
-	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --no-shuffle --tempdir tmp \
+	--train-sets "$DATA"/train.err.txt.gz "$DATA"/train.corr.txt.gz --shuffle-in-ram --tempdir tmp \
 	--data-weighting "$DATA"/weights.w2.gz --data-weighting-type word \
 	--vocabs "$OUT"/vocab.{spm,spm} --tied-embeddings-all \
 	--max-length 150 \
