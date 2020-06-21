@@ -14,6 +14,9 @@ Here we are preparing dataset from corpus
 * TODO Stage 4
 /Split & compress/
 [[file:stage4.sh][stage4.sh]]
+
+Then start ~train.sh~ without data weighting. It will generate ~vocab.spm~.
+Put it in [[file:./data/stage4]]
 * TODO Stage 5
 /Generate weights/
 - needs spm embedings produced by marian
