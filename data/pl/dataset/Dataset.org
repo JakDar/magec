@@ -20,3 +20,4 @@ Put it in [[file:./data/stage4]]
 * TODO Stage 5
 /Generate weights/
 - needs spm embedings produced by marian
+[[file:stage5.sh][stage5.sh]]

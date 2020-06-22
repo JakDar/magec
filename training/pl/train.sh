@@ -5,9 +5,10 @@ MARIAN=../../models/tools/marian-dev/build
 # DATA=/content/magec/data/pl/split # Collab
 DATA=$SCRATCH/magec/data/pl/split # Prometheus
 MODELDIR='.'
-OUT=/$SCRATCH/magecout/model1
+OUT=/$SCRATCH/magecout/model2
 
-mkdir -p $OUT
+mkdir -p "$OUT"
+cp "$SCRATCH"/magecout/vocab.spm "$OUT"/vocab.spm
 
 # Before vocab
 #after macx length
