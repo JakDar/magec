@@ -12,7 +12,7 @@ set -euo pipefail
 # DATA=$ROOT/data
 MARIAN=../../models/tools/marian-dev/build
 # OUT=/out
-OUT=$SCRATCH/magecout/
+OUT=$SCRATCH/magecout
 
 mkdir -p "$OUT/evaluate1nmt"
 
