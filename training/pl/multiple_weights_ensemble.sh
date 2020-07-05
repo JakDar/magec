@@ -19,7 +19,7 @@ mkdir -p "$OUT/evaluate.many.nmt"
 #../../data/pl/evaluation/wikied_v1_before
 ERROR_FILE=$1
 shift
-GPUS=$1
+GPUS="$1"
 shift
 
 model_list() {

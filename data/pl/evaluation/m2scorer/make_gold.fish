@@ -6,7 +6,7 @@ function preprocess
     sd '[0-9]' '1' | python ../../all/word_tokenize.py >$argv[2] # replace all numbers to ones, keeping length
 end
 
-test -f out/before_v1 || preprocess ../wikied_v1_before out/before_v1
-test -f out/after_v1 || preprocess ../wikied_v1_after out/after_v1
+test -f out/before_v2 || preprocess ../wikied_v2_before out/before_v2
+test -f out/after_v2 || preprocess ../wikied_v2_after out/after_v2
 
-scripts/edit_creator.py out/before_v1 out/after_v1 >out/gold_v1
+scripts/edit_creator.py out/before_v2 out/after_v2 >out/gold_v2
