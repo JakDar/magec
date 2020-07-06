@@ -5,7 +5,9 @@ set result out/$dataset/result
 mkdir -p "out/$dataset"
 rm -f $result
 
-for i in (seq 4 9 | tac)
-    echo marain: 0.$i >> $result
-    ./m2scorer ./in/$dataset/ensemble.corrected_0.$i.out ./out/gold_v1 >> $result
+for file in (ls ./in/$dataset/* | grep '[5-9].out' )
+    echo "$file"
+
+    echo $file >> $result
+    timeout 30s sh -c "./m2scorer $file ./out/gold_v2 >> $result"
 end
