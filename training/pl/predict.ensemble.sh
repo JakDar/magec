@@ -39,7 +39,7 @@ nmt_weight=0$(echo "(10 - $i) / ($nmt_count *10)" | bc -l | head -c 5)
 
 nmt_weights="$(weight_list "$nmt_count" $nmt_weight)"
 
-OPTIONS="-m  $nmt_models $MODEL_DIR/lm1/lm.npz.best-ce-mean-words.npz --weights $nmt_weights $lm -v $MODEL_DIR/vocab.spm $MODEL_DIR/vocab.spm --mini-batch 1000 -w 8000  --beam-size 6 --normalize 1.0 --max-length 120 --max-length-crop --quiet-translation"
+OPTIONS="-m  $nmt_models $MODEL_DIR/lm1/lm.npz.best-ce-mean-words.npz --weights $nmt_weights $lm -v $MODEL_DIR/vocab.spm $MODEL_DIR/vocab.spm --mini-batch 1000 -w 8000  -d 0 --beam-size 6 --normalize 1.0 --max-length 120 --max-length-crop --quiet-translation"
 
 cat "$ERROR_FILE" | $MARIAN/marian-decoder $OPTIONS 2>$ERROR_FILE.ensemble.stderr \
 	>"$ERROR_FILE.corrected"
