@@ -46,7 +46,7 @@ d=0
 
 for nmt_count in $(seq 1 4); do
 	for i in $(seq 1 8); do #lm percentage
-        echo $d run
+		echo $d run
 		# TODO:bcm
 		lm=0.$i
 		nmt_weight=0$(echo "(10 - $i) / ($nmt_count *10)" | bc -l | head -c 5 )
@@ -54,9 +54,9 @@ for nmt_count in $(seq 1 4); do
 		nmt_models="$(model_list "$nmt_count" model.npz.best-cross-entropy.npz)"
 		nmt_weights="$(weight_list "$nmt_count" $nmt_weight)"
 
-		OPTIONS="-m  $nmt_models $OUT/lm1/lm.npz.best-ce-mean-words.npz --weights $nmt_weights $lm -v $OUT/vocab.spm $OUT/vocab.spm --mini-batch 32 --beam-size 6 --normalize 1.0 --max-length 120 --max-length-crop --quiet-translation"
+		OPTIONS="-m  $nmt_models $OUT/lm1/lm.npz.best-ce-mean-words.npz --weights $nmt_weights $lm -v $OUT/vocab.spm $OUT/vocab.spm --mini-batch 32 -d 1 -w 10000 --beam-size 6 --normalize 1.0 --max-length 120 --max-length-crop --quiet-translation"
 
-        d=$((d +1))
+		d=$((d +1))
 
 		cat "$ERROR_FILE" | $MARIAN/marian-decoder $OPTIONS -d $GPUS 2>$OUT/ensemble.stderr \
 			>"$OUT/evaluate.many.nmt/ensemble.corrected.best_ce.${nmt_count}nmt.lmpercent$lm.out"
