@@ -4,11 +4,26 @@
 nvidia p100
 https://stackoverflow.com/questions/43151627/installing-g-7-0-1-on-debian-8-7#43151826
 1. Install gcc-7 and set as default
-2. Install g++-7 and set as default
-3. uninstall libboost
-4. Install libboost 1.67
+2. Install g++-7 and set as default ( or 8? )
+3. uninstall libboost if installed
+4. install cmake 3.12
+   #+BEGIN_SRC bash
+    wget  "https://cmake.org/files/v3.12/cmake-3.12.2-Linux-x86_64.tar.gz"
+    export LD_PRELOAD='' && tar --strip-components=1 -xzf cmake-3.12.2-Linux-x86_64.tar.gz -C /usr/local
+    rm cmake-3.12.2-Linux-x86_64.tar.gz
+   #+END_SRC
+5. Install rest
+   #+BEGIN_SRC  bash
+   sudo apt install libboost1.67 libprotobuf17 protobuf-compiler libprotobuf-dev openssl libssl-dev libgoogle-perftools-dev
+   #+END_SRC
+6. Download model
+   #+BEGIN_SRC bash
+   mkdir $HOME/blob/data
+   cd $HOME/blob/data
+   gsutil cp gs://magec-polish-models/magec_lite.zip magec_lite.zip
+   #+END_SRC
+
 * Instaling on prometheus
-- agh
   #+BEGIN_SRC bash :noeval
 #Protobuf:
 # https://github.com/protocolbuffers/protobuf/blob/master/src/README.md
@@ -20,10 +35,6 @@ git submodule update --init --recursive
 ./configure --prefix=/net/scratch/people/$USER/fakeuser
 make -j6
 make install
-
-
-
-
 
 #Google perf tools
 
@@ -67,17 +78,3 @@ make -j8
 
 
   #+END_SRC
-** Not working
-#+begin_quote
-[ 82%] Building CXX object src/CMakeFiles/marian.dir/layers/convolution.cpp.o
- mnvcc error   : 'cicc' died due to signal 9 (Kill signal)
-CMake Error at marian_cuda_generated_add_all.cu.o.Release.cmake:275 (message):
-  Error generating file
-  /net/people/plgjakdar/magec/models/tools/marian-dev/build/src/CMakeFiles/marian_cuda.dir/tensors/gpu/./marian_cuda_generated_add_all.cu.o
-
-
-make[2]: *** [src/CMakeFiles/marian_cuda.dir/tensors/gpu/marian_cuda_generated_add_all.cu.o] Error 1
-make[1]: *** [src/CMakeFiles/marian_cuda.dir/all] Error 2
-make[1]: *** Waiting for unfinished jobs....
-
-#+end_quote
